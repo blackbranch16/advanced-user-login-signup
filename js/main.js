@@ -13,6 +13,7 @@ let signInPassword = document.getElementById("existing-password");
 let users = loadUsers();
 let signInBtn = document.getElementById("sign-in-btn");
 let signUpBtn = document.getElementById("sign-up-btn");
+let adminAccess = document.getElementById("admin-password");
 
 // SIGN UP BTN CLICKED
 signUpBtn.addEventListener("click", signUpHandler);
@@ -21,6 +22,8 @@ function signUpHandler() {
   // Grab input from input values
   let newUsername = usernameInput.value;
   let newPassword = passwordInput.value;
+  let localAdminAccess = adminAccess.value;
+
   console.log(newPassword);
 
   // Verify using username result
@@ -36,14 +39,14 @@ function signUpHandler() {
   console.log("loopResult5:", loopResult5);
 
   // Use results to consider whether to createUser or not
-  if (loopResult == -1 || loopResult2 == -1) {
+  if (loopResult == -1 || loopResult2 == -1 || loopResult5 == -1) {
 
     // Do not create a new user
     alert("New user creation was unsuccessful.")
   } else {
     
     // Create a new user
-    users.push(createUser(newUsername, newPassword));
+    users.push(createUser(newUsername, newPassword, localAdminAccess));
     console.log("users:", users);
     loadUsers();
     saveUsers();
@@ -70,14 +73,19 @@ function signInHandler() {
     alert("User login unsuccessful.");
   } else {
     alert("User login successful!");
+    displayHomePage();
   }
 }
 
 // HELPER FUNCTIONS
-function createUser(newUsername, newPassword) {
+function createUser(newUsername, newPassword, adminAccess) {
   return {
     username: newUsername,
     password: newPassword,
+    adminAccess: adminAccess,
+    name: '',
+    trophy: '',
+    task: '',
   };
 }
 
@@ -132,3 +140,50 @@ function ensureContent(existingUsername, existingPassword) {
     return 1;
   }
 }
+
+// New Home Page JS
+// Home Page Code
+
+// Get HTML Elements
+let nameSpan = document.getElementById("name");
+let trophySpan = document.getElementById("trophies");
+let taskSpan = document.getElementById("tasks");
+
+// Load HTML Element Values
+nameSpan = users[users.length - 1].name;
+trophySpan = users[users.length - 1].trophy;
+taskSpan = users[users.length - 1].task;
+
+// Same thing for buttons
+let nameBtn = document.getElementById("name-btn");
+let trophiesBtn = document.getElementById("trophies-btn");
+let tasksBtn = document.getElementById("tasks-btn");
+
+// Create event listeners for buttons
+nameBtn.addEventListener("click", enterName);
+trophiesBtn.addEventListener("click", enterTrophies);
+tasksBtn.addEventListener("click", enterTasks);
+
+// Define each function
+function enterName() {
+    let username = prompt("What is your name?");
+    document.getElementById("name").innerHTML = username;
+    users[users.length - 1].name = username;
+}
+
+function addUser(username) {
+  return {
+    name: username,
+  };
+}
+
+function enterTrophies() {
+    let userTrophies = prompt("What is one of your accomplishments?")
+    trophySpan.innerHTML += ` <br>- ${userTrophies}`
+}
+
+function enterTasks() {
+    let userTasks = prompt("What is one of your unfinished tasks?")
+    taskSpan.innerHTML += `<br>- ${userTasks}`
+}
+

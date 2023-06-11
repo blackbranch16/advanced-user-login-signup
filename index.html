@@ -7,7 +7,7 @@
 
     <title>Login / Signup</title>
 
-    <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link rel="stylesheet" href="style.css" />
 
     <script defer src="js/gui.js"></script>
@@ -16,12 +16,12 @@
 
   <body>
     <!-- SIGN UP DIV -->
-    <div id="sign-up-div">
-      <img src="img/orange-logo.png" alt="Your Posts Logo" width="150px" />
+    <div id="sign-up-div" class = "active">
+      <img src="orange-logo.png" alt="Your Posts Logo" width="150px" />
       <hr />
 
       <h1>Become a Member:</h1>
-      <p>New employees - fill out this form to log in!</p>
+      <p>New employees - fill out this form to access employee features!</p>
 
       <p class="input-label">Username: <span>*</span></p>
       <input type="text" id="username" />
@@ -31,11 +31,10 @@
 
       <p class="input-label">Confirm Password: <span>*</span></p>
       <input type="password" id="password-verification" />
-
-      <p>
-        <button id="admin-checkbox">Request Admin Privileges: </button>
-      </p>
-
+  
+      <p class="input-label">Enter password for admin privileges: </p>
+      <input type="password" id="admin-password" />
+    
       <p>
         <button id="sign-up-btn">Sign Up</button>
       </p>
@@ -43,6 +42,9 @@
       <p>
         Already a Member?
         <span id="sign-in-link" class="fake-link">Sign In Here.</span>
+        <hr>
+        Looking for the home page?
+        <span id="home-page-link" class="fake-link">Home Page Here.</span>
       </p>
 
       <p class="required">* required field.</p>
@@ -50,7 +52,7 @@
 
     <!-- SIGN IN DIV -->
     <div id="sign-in-div">
-      <img src="img/orange-logo.png" alt="Your Posts Logo" width="150px" />
+      <img src="orange-logo.png" alt="Your Posts Logo" width="150px" />
       <hr />
 
       <h1>Welcome Back</h1>
@@ -72,6 +74,43 @@
       </p>
 
       <p class="required">* required field.</p>
+    </div>
+
+    <!-- PERSONALIZED HOME PAGE -->
+    <div id="home-page-div">
+      <h1 id="title">Welcome to your home page!</h1>
+      <div id="home-page">
+      <p class="desc">Enter your name here: </p>
+      <div class="output" id="name"></div>
+      <p></p>
+      <button id="name-btn" class="home-btn">Click to add a name</button>
+      <hr>
+      <p class="desc">Enter notable accomplishments here: </p>
+      <div class="output" id="trophies"></div>
+      <p></p>
+      <button id="trophies-btn" class="home-btn">Click to add a trophy</button>
+      <hr>
+      <p class="desc">Enter your assigned tasks: </p>
+      <div class="output" id="tasks"></div>
+      <p></p>
+      <button id="tasks-btn" class="home-btn">Enter your tasks here</button>
+      <hr>
+      <p class="desc">Current rate of pay: </p>
+      <div class="output" id="tasks">$20</div>
+      <p></p>
+      <hr>
+      <p class="desc">Admin tasks you have been assigned: </p>
+      <div class="output" id="admin-tasks">---</divs>
+      </div>
+      <hr>
+      <p>
+        Already a Member?
+        <span id="sign-in-link" class="fake-link">Sign In Here.</span>
+        <hr>
+        Looking for the sign-up page?
+        <span id="sign-up-link" class="fake-link">Home Page Here.</span>
+        <hr>
+      </p>
     </div>
   </body>
 </html>
