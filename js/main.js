@@ -83,10 +83,10 @@ function createUser(newUsername, newPassword, adminAccess) {
     username: newUsername,
     password: newPassword,
     adminAccess: adminAccess,
-    name: document.getElementById("name"),
-    trophy: document.getElementById("trophy"),
-    task: document.getElementById("task"),
-  };
+    name: '',
+    trophy: '',
+    task: '',
+  }
 }
 
 function loadUsers() {
@@ -148,43 +148,45 @@ function ensureContent(existingUsername, existingPassword) {
 let nameSpan = document.getElementById("name");
 let trophySpan = document.getElementById("trophies");
 let taskSpan = document.getElementById("tasks");
+let pages = loadPages();
 
 // Load HTML Element Values
-nameSpan = users[users.length - 1].name;
-trophySpan = users[users.length - 1].trophy;
-taskSpan = users[users.length - 1].task;
+//nameSpan = users[users.length - 1].name;
+//trophySpan = users[users.length - 1].trophy;
+//taskSpan = users[users.length - 1].task;
 
 // Same thing for buttons
-let nameBtn = document.getElementById("name-btn");
-let trophiesBtn = document.getElementById("trophies-btn");
-let tasksBtn = document.getElementById("tasks-btn");
+let pageBtn = document.getElementById("page-btn");
 
 // Create event listeners for buttons
-nameBtn.addEventListener("click", enterName);
-trophiesBtn.addEventListener("click", enterTrophies);
-tasksBtn.addEventListener("click", enterTasks);
+pageBtn.addEventListener("click", enterPageObjects);
 
 // Define each function
-function enterName() {
+function enterPageObjects() {
+  // Update name
     let username = prompt("What is your name?");
     document.getElementById("name").innerHTML = username;
     users[users.length - 1].name = username;
+
+  // Update trophy
+    let userTrophies = prompt("What is one of your accomplishments?")
+    document.getElementById("trophies").innerHTML += `<br>- ${userTrophies}`
+    users[users.length - 1].trophy += userTrophies;
+
+  // Update task
+    let userTasks = prompt("What is one of your unfinished tasks?")
+    document.getElementById("tasks").innerHTML += `<br>- ${userTasks}`
+    users[users.length - 1].task += userTasks;
+    saveUsers;
 }
 
-function addUser(username) {
+
+// Helper Functions
+
+function loadPages() {
   return {
-    name: username,
+    name: '',
+    trophies: '',
+    task: '',
   };
 }
-
-function enterTrophies() {
-    let userTrophies = prompt("What is one of your accomplishments?")
-    trophySpan.innerHTML += ` <br>- ${userTrophies}`
-}
-
-function enterTasks() {
-    let userTasks = prompt("What is one of your unfinished tasks?")
-    taskSpan.innerHTML += `<br>- ${userTasks}`
-}
-
-// meowmeowmeow eowmweo
