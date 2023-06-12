@@ -183,11 +183,12 @@ function enterPageObjects() {
 
 
 // Helper Functions
+// Isolate this from the above function !!!!!!!!
 
 function loadPages(name, trophies, tasks) {
   return {
     name: name ?? "",
-    trophies: trophies,
-    task: tasks,
+    trophies: trophies ?? "",
+    task: tasks ?? "",
   };
 }
