@@ -10,6 +10,7 @@ let signInUsername = document.getElementById("existing-username");
 let signInPassword = document.getElementById("existing-password");
 
 // Global Variables
+
 let users = loadUsers();
 let signInBtn = document.getElementById("sign-in-btn");
 let signUpBtn = document.getElementById("sign-up-btn");
