@@ -10,7 +10,6 @@ let signInUsername = document.getElementById("existing-username");
 let signInPassword = document.getElementById("existing-password");
 
 // Global Variables
-
 let users = loadUsers();
 let signInBtn = document.getElementById("sign-in-btn");
 let signUpBtn = document.getElementById("sign-up-btn");
@@ -84,9 +83,9 @@ function createUser(newUsername, newPassword, adminAccess) {
     username: newUsername,
     password: newPassword,
     adminAccess: adminAccess,
-    name: '',
-    trophy: '',
-    task: '',
+    name: document.getElementById("name"),
+    trophy: document.getElementById("trophy"),
+    task: document.getElementById("task"),
   };
 }
 
