@@ -83,9 +83,9 @@ function createUser(newUsername, newPassword, adminAccess) {
     username: newUsername,
     password: newPassword,
     adminAccess: adminAccess,
-    name: '',
-    trophy: '',
-    task: '',
+    name: pages.name,
+    trophy: pages.trophies,
+    task: pages.task,
   }
 }
 
@@ -177,16 +177,17 @@ function enterPageObjects() {
     let userTasks = prompt("What is one of your unfinished tasks?")
     document.getElementById("tasks").innerHTML += `<br>- ${userTasks}`
     users[users.length - 1].task += userTasks;
+    loadPages(username, userTrophies, userTasks);
     saveUsers;
 }
 
 
 // Helper Functions
 
-function loadPages() {
+function loadPages(name, trophies, tasks) {
   return {
-    name: '',
-    trophies: '',
-    task: '',
+    name: name ?? "",
+    trophies: trophies,
+    task: tasks,
   };
 }
